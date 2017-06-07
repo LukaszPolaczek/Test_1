@@ -1,0 +1,26 @@
+wiek		numer   
+plec		numer
+wielodzietnosc	numer
+wielmista       numer
+stukoncz        numer
+
+stzamiesz	numer
+strodzice	numer
+stgdzie		string
+ilepok 		string
+ilewsplok	string
+
+ilezmian	numer
+powzmian	string
+order		string
+znanewczesniej	string
+koedukacyjne	string
+
+gdzieszukane	string
+gdzieszukanetxt	string
+mpk		numer
+czasprzejazdu	numer
+rynekok		numer
+
+wnioski 	string	
+
