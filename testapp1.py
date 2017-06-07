@@ -35,6 +35,7 @@ class Formdata (db.Model):
     mpk = db.Column(db.Integer)
     czasprzejazdu = db.Column(db.Integer)
     rynekok = db.Column(db.Integer)
+    wnioski = db.Column(db.String)
 
 
     def __init__(self, wiek, plec, wielodzietnosc, wielmiasta, stukoncz, stzamiesz, strodzice, stgdzie, ilepok, ilewsplok, ilezmian, powzmian, order, znanewczesniej, koedukacyjne, gdzieszukane, gdzieszukanetxt, mpk, czasprzejazdu, rynekok, wnioski):
@@ -106,7 +107,7 @@ def add_todatabase():
     czasprzejazdu = request.form['czasprzejazdu']
     rynekok = request.form['rynekok']
 
-    wnioski = "wnioski o rynku" # request.form['wnioski']
+    wnioski = request.form['wnioski']
 
     
     fd = Formdata(wiek, plec, wielodzietnosc, wielmiasta, stukoncz, stzamiesz, strodzice, stgdzie, ilepok, ilewsplok, ilezmian, powzmian, order, znanewczesniej, koedukacyjne, gdzieszukane, gdzieszukanetxt, mpk, czasprzejazdu, rynekok, wnioski)

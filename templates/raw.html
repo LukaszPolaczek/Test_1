@@ -47,14 +47,20 @@
         <td>{{ element.id }}</td>
         <td>{{ element.created_at }}</td>
 
-        <td>{{ element.wiek }}</td>
-        <td>{{ element.plec }}</td>
+        <td>{{ element.wiek }}        </td>
+        <td>{% if element.plec == 0 %}
+            Mężczyzna
+            {% endif %}
+            {% if element.plec == 1 %}
+            Kobieta
+            {% endif %}
+        </td>
         <td>{{ element.wielodzietnosc }}</td>
         <td>{{ element.wielmiasta }}</td>
         <td>{{ element.stukoncz }}</td>
 
         <td>{{ element.stzamiesz }}</td>
-        <td>{{ element.strdzice }}</td>
+        <td>{{ element.strodzice }}</td>
         <td>{{ element.stgdzie }}</td>
         <td>{{ element.ilepok }}</td>
         <td>{{ element.ilewsplok }}</td>
