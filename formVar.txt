@@ -1,7 +1,7 @@
 wiek		numer   
 plec		numer
 wielodzietnosc	numer
-wielmista       numer
+wielmiasta       numer
 stukoncz        numer
 
 stzamiesz	numer

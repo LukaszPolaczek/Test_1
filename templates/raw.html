@@ -1,0 +1,80 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Raw data</h1>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Created at</th>
+
+        <th>Wiek</th>
+        <th>Plec</th>
+        <th>wielodzietnosc</th>
+        <th>wielmiasta</th>
+        <th>Studia uk</th>
+
+        <th>Studia zam</th>
+        <th>Studia rodzic</th>
+        <th>Studia gdzie</th>
+        <th>ile pokojow</th>
+        <th>ile wspollokatorow</th>
+
+        <th>ile zmian</th>
+        <th>Pow zmian</th>
+        <th>Priorytety</th>
+        <th>osoby znane wcz</th>
+        <th>koedukacyjne mieszk?</th>
+
+        <th>gdzie szukane</th>
+        <th>gdzie szukane inne</th>
+        <th>Czy kom miejska</th>
+        <th>Czas przejazdu</th>
+        <th>Zadowolenie z rynku</th>
+
+        <th>Przemyslenia</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for element in formdata %}
+    <tr>
+        <td>{{ element.id }}</td>
+        <td>{{ element.created_at }}</td>
+
+        <td>{{ element.wiek }}</td>
+        <td>{{ element.plec }}</td>
+        <td>{{ element.wielodzietnosc }}</td>
+        <td>{{ element.wielmiasta }}</td>
+        <td>{{ element.stukoncz }}</td>
+
+        <td>{{ element.stzamiesz }}</td>
+        <td>{{ element.strdzice }}</td>
+        <td>{{ element.stgdzie }}</td>
+        <td>{{ element.ilepok }}</td>
+        <td>{{ element.ilewsplok }}</td>
+
+        <td>{{ element.ilezmian }}</td>
+        <td>{{ element.powzmian }}</td>
+        <td>{{ element.order }}</td>
+        <td>{{ element.znanewczesniej }}</td>
+        <td>{{ element.koedukacyjne }}</td>
+
+        <td>{{ element.gdzieszukane }}</td>
+        <td>{{ element.gdzieszukanetxt }}</td>
+        <td>{{ element.mpk }}</td>
+        <td>{{ element.czasprzejazdu }}</td>
+        <td>{{ element.rynekok }}</td>
+
+        <td>{{ element.wnioski }}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

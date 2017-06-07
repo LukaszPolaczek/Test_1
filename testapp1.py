@@ -72,9 +72,48 @@ def index():
 def show_form():
     return render_template('form.html')
 
+@app.route("/raw")
+def show_database():
+    data = db.session.query(Formdata).all()
+    return render_template('raw.html', formdata = data)
+
+
 @app.route("/save", methods=['POST'])
 def add_todatabase():
-    return render_template('base.html')
+
+    wiek = request.form['wiek']
+    plec = request.form['plec']
+    wielodzietnosc = request.form['wielodzietnosc']
+    wielmiasta = request.form['wielmiasta']
+    stukoncz = request.form['stukoncz']
+
+    stzamiesz = request.form['stzamiesz']
+    strodzice = request.form['strodzice']
+    stgdzie = " studia gdzie" # request.form['stgdzie']
+    ilepok = "ilo pokojowe" #request.form['ilepok']
+    ilewsplok = "ile wspollokatorow" # request.form['ilewsplok']
+
+    ilezmian = request.form['ilezmian']
+    powzmian = request.form['powzmian']
+    order = "kolejnosc czynnikow" #request.form['order']
+    znanewczesniej = "czy znane wczesniej"# request.form['znanewczesniej']
+    koedukacyjne = "koedukacyjne?"# request.form['koedukacyjne']
+
+    gdzieszukane = "gdzie szukane" # request.form['gdzieszukane']
+    gdzieszukanetxt = "gdzie szukane pole tekstowe" # request.form['gdzieszukanetxt']
+    mpk = request.form['mpk']
+
+    czasprzejazdu = request.form['czasprzejazdu']
+    rynekok = request.form['rynekok']
+
+    wnioski = "wnioski o rynku" # request.form['wnioski']
+
+    
+    fd = Formdata(wiek, plec, wielodzietnosc, wielmiasta, stukoncz, stzamiesz, strodzice, stgdzie, ilepok, ilewsplok, ilezmian, powzmian, order, znanewczesniej, koedukacyjne, gdzieszukane, gdzieszukanetxt, mpk, czasprzejazdu, rynekok, wnioski)
+    db.session.add(fd)
+    db.session.commit()
+
+    return redirect('/')
 
 
 if __name__ == '__main__':
