@@ -13,372 +13,99 @@
     <h3>Ew. naglowek</h3>
 
     <div class="form-group">
-        <label for="wiek">1. Podaj swój wiek:</label>
-        <input type="number" class="form-control" id="wiek" name="wiek" required>
+        <label for="wiek">1. Ile masz lat?</label>
+        <input type="number" class="form-control" id="wiek" name="wiek" min="18" max="30" required>
     </div>
-    <b>2. Wybierz swoją płeć</b>
-    <div class="form-check">
+
+    <div class="divider">
+    <b>2. Wybierz swoją płeć:</b>
+    </div>
+    <div class="form-check form-check-inline">
         <label class="form-check">
             <input class="form-check-input" type="radio" name="plec" value="0" checked>
+        Kobieta
+        </label>
+        <label class="form-check">
+            <input class="form-check-input" type="radio" name="plec" value="1">
         Mężczyzna
         </label>
     </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="plec" value="1">
-        Kobieta
-        </label>
-    </div>
+
     <div class="form-group">
-        <label for="wielodzietnosc">3. Jak wielodzietna jest Twoja rodzina?</label>
-        <select class="form-control" id="wielodzietnosc" name="wielodzietnosc" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 i więcej</option>
+        <label for="czynsz">3. Ile mniej więcej płacisz za swoje obecne lokum (PLN)?</label>
+        <input type="number" class="form-control" id="czynsz" name="czynsz" min="0" max="3000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="gmiesz">4. Gdzie aktualnie mieszkasz?</label>
+        <select class="form-control" id="gmiesz" name="gmiesz" required>
+            <option value="1">Akademik</option>
+            <option value="2">Mieszkanie (samodzielnie</option>
+            <option value="3">pokój 1-osobowy</option>
+            <option value="4">pokój wieloosobowy</option>
+            <option value="5">mieszkam z rodzicami</option>
         </select>
     </div>
-    <b>4. Z jak dużej miejscowości pochodzisz?</b>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="wielmiasta" value="1" checked>
-        do 5 000 mieszkańców
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="wielmiasta" value="2">
-        5 000 - 50 000 mieszkańców
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="wielmiasta" value="3">
-        50 000 - 200 000 mieszkańców
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="wielmiasta" value="4">
-        powyżej 200 000 mieszkańców
-        </label>
-    </div>
-    <b>5. Czy ukończyłaś/eś już studia?</b>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="stukoncz" value="1" checked>
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="stukoncz" value="0">
-        Nie
-        </label>
-    </div>
-    <b>6. Czy studiowałaś/eś w miejscu zamieszkania?</b>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="stzamiesz" value="1" checked>
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="stzamiesz" value="0">
-        Nie
-        </label>
-    </div>
-    <b>7. Czy w trakcie studiów mieszkałaś/eś z rodzicami?</b>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="strodzice" value="1" checked>
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="strodzice" value="0">
-        Nie
-        </label>
-    </div>
-    <b>8. Gdzie mieszkałaś/eś w trakcie studiów? Można zaznaczyć kilka odpowiedzi.</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="stgdzie" value="akademik">
-        Akademik
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="stgdzie" value="wlasne">
-        Własne mieszkanie
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="stgdzie" value="wynajete">
-        Wynajmowane mieszkanie
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="stgdzie" value="stancja">
-        Stancja
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="stgdzie" value="inne">
-        Inne
-        </label>
-    </div>
-    <b>9. W ilu pokojowym mieszkaniu mieszkałaś/eś? Można zaznaczyć wiele odpowiedzi. </b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilepok" value="1">
-        1
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilepok" value="2">
-        2
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilepok" value="3">
-        3
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilepok" value="4">
-        4 i więcej
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilepok" value="5">
-        Nie mieszkałam/em w mieszkaniu
-        </label>
-    </div>
-    <b>10. Z iloma osobami dzieliłaś/eś pokój? Można zaznaczyć kilka odpowiedzi.</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilewsplok" value="0">
-        Z nikim.
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilewsplok" value="1">
-        1
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilewsplok" value="2">
-        2
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="ilewsplok" value="3">
-        3 i więcej
-        </label>
-    </div>
-    <b>11. Jak często zmieniałaś/eś wynajmowane mieszkanie?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="0" checked>
-        0
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="1">
-        1
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="2">
-        2
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="3">
-        3
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="4">
-        4
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="5">
-        5
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="ilezmian" value="6">
-        Nie mieszkałam/em w mieszkaniu
-        </label>
-    </div>
-    <div class="form-group">
-        <label for="powzmian">12. Co było powodem zmiany mieszkania?</label>
-        <textarea class="form-control" name="powzmian" id="powzmian" rows="3"></textarea>
-    </div>
 
-<script type="text/javascript">
-    $(function() {
-        $( "#sortable" ).sortable({
-            placeholder: "ui-state-highlight",
-            cursor: 'crosshair',
-            update: function(event, ui) {
-
-      var Order = $("#sortable").sortable('toArray').toString();
-      $('#order').val(Order);
- }
-    });
-        $( "#sortable" ).disableSelection();
-});
-</script>
-
-    <div>
-        <label for="sortable">13. Co jest dla Ciebie najważniejsze w wyborze mieszkania? Uszereguj poniższe odpowiedzi od najistotniejszego.</label>
-        <ul id="sortable" style="width: 250px;">
-            <li class="ui-state-default" id="Lokalizacja">  <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Lokalizacja</li>
-            <li class="ui-state-default" id="Cena">         <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Cena</li>
-            <li class="ui-state-default" id="Standard">     <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Standard</li>
-        </ul>
-        <input name="order"  type="hidden" />
+    <div class="divider">
+    <b>5. Oceń jak ważne przy wyborze mieszkania są dla ciebie:<br></b>
     </div>
-<b>14. Czy mieszkałaś/eś z osobami, które znałaś/eś wcześniej?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="znanewczesniej" value="Tak">
-        Tak
-        </label>
+    <div class="form-group-row">
+        <div class="col-sm-1">Cena</div>
+        <div class="col-sm-11">
+            <div class="form-check form-check-inline">
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wcena" value="1" checked>
+                mało istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wcena" value="2">
+                średnio istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wcena" value="3">
+                bardzo istotne
+                </label>
+            </div>
+        </div>
     </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="znanewczesniej" value="Nie">
-        Nie
-        </label>
+    <div class="form-group-row">
+        <div class="col-sm-1">Standard</div>
+        <div class="col-sm-11">
+            <div class="form-check form-check-inline">
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wstand" value="1" checked>
+                 mało istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wstand" value="2">
+                średnio istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wstand" value="3">
+                bardzo istotne
+                </label>
+            </div>
+        </div>
     </div>
-<b>15. Czy mieszkałaś/eś w mieszkaniu koedukacyjnym?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="koedukacyjne" value="Tak">
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="koedukacyjne" value="Nie">
-        Nie
-        </label>
-    </div>
-<b>16. Gdzie szukałaś/eś miejsca do mieszkania?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="gdzieszukane" value="internet">
-        Internet ( w odpowiedzi "inne" możesz podać konkretne strony internetowe)
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="gdzieszukane" value="znajomi">
-        Znajomi
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="gdzieszukane" value="rodzina">
-        Rodzina
-        </label>
-    </div>
-    <div>
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="gdzieszukane" value="inne" id="checkbox1" onclick="if (this.checked){ document.getElementById('gdzieszukanetxt').removeAttribute('disabled');}" />
-            <textarea id="gdzieszukanetxt" name="gdzieszukanetxt" placeholder="inne" disabled></textarea>
-        </label>
-    </div>
-    <b>17. Jaki był miesięczny koszt wynajęcia/os. (wliczając wszystkie opłaty)?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="koszt" value="0" checked>
-        do 300 zł
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="koszt" value="1">
-        300 - 500 zł
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="koszt" value="2">
-        500 - 700 zł
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="koszt" value="3">
-        700 - 1000 zł
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="koszt" value="4">
-        powyżej 1000 zł
-        </label>
-    </div>
-    <b>18. Czy dojeżdżałaś/eś na uczelnię komunikacją miejską?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="mpk" value="1" checked>
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="mpk" value="0">
-        Nie
-        </label>
-    </div>
-    <div class="form-group">
-        <label for="czasprzejazdu">19. Ile czasu zajmowało Ci dostanie się na uczlnię? (W minutach):</label>
-        <input type="number" class="form-control" id="czasprzejazdu" name="czasprzejazdu" required>
-    </div>
-
-    <b>20. Czy rynek nieruchomości spełnił Twoje oczekiwania?</b>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="rynekok" value="1" checked>
-        Tak
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="rynekok" value="0" checked>
-        Nie
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label for="wnioski">21. Czy w obecnym momencie zdecydował(a)byś się mieszkać tak samo? W pytaniu otwartym możesz odnieść się do wszystkich miejsc zamieszkania.</label>
-        <textarea class="form-control" name="wnioski" id="wnioski" rows="3"></textarea>
+    <div class="form-group-row">
+        <div class="col-sm-1">Lokalizacja</div>
+        <div class="col-sm-11">
+            <div class="form-check form-check-inline">
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wloka" value="1" checked>
+                 mało istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wloka" value="2">
+                średnio istotne
+                </label>
+                <label class="form-check">
+                    <input class="form-check-input" type="radio" name="Wloka" value="3">
+                bardzo istotne
+                </label>
+            </div>
+        </div>
     </div>
 
  <button type="submit" class="btn btn-default">Save</button>
