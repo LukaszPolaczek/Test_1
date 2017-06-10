@@ -17,50 +17,22 @@ class Formdata (db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     wiek = db.Column(db.Integer)
     plec = db.Column(db.Integer)
-    wielodzietnosc = db.Column(db.Integer)
-    wielmiasta = db.Column(db.Integer)
-    stukoncz = db.Column(db.Integer)
-    stzamiesz = db.Column(db.Integer)
-    strodzice = db.Column(db.Integer)
-    stgdzie = db.Column(db.String)
-    ilepok = db.Column(db.String)
-    ilewsplok = db.Column(db.String)
-    ilezmian = db.Column(db.Integer)
-    powzmian = db.Column(db.String)
-    order = db.Column(db.String)
-    znanewczesniej = db.Column(db.String)
-    koedukacyjne = db.Column(db.String)
-    gdzieszukane = db.Column(db.String)
-    gdzieszukanetxt = db.Column(db.String)
-    mpk = db.Column(db.Integer)
-    czasprzejazdu = db.Column(db.Integer)
-    rynekok = db.Column(db.Integer)
-    wnioski = db.Column(db.String)
+    czynsz = db.Column(db.Integer)
+    gmiesz = db.Column(db.Integer)
+    Wcena  = db.Column(db.Integer)
+    Wstand = db.Column(db.Integer)
+    Wloka  = db.Column(db.Integer)
 
 
-    def __init__(self, wiek, plec, wielodzietnosc, wielmiasta, stukoncz, stzamiesz, strodzice, stgdzie, ilepok, ilewsplok, ilezmian, powzmian, order, znanewczesniej, koedukacyjne, gdzieszukane, gdzieszukanetxt, mpk, czasprzejazdu, rynekok, wnioski):
+    def __init__(self, wiek, plec, czynsz, gmiesz, Wcena, Wstand, Wloka):
 
         self.wiek = wiek
         self.plec = plec
-        self.wielodzietnosc = wielodzietnosc
-        self.wielmiasta = wielmiasta
-        self.stukoncz = stukoncz
-        self.stzamiesz = stzamiesz
-        self.strodzice = strodzice
-        self.stgdzie = stgdzie
-        self.ilepok = ilepok
-        self.ilewsplok = ilewsplok
-        self.ilezmian = ilezmian
-        self.powzmian = powzmian
-        self.order = order
-        self.znanewczesniej = znanewczesniej
-        self.koedukacyjne = koedukacyjne
-        self.gdzieszukane = gdzieszukane
-        self.gdzieszukanetxt = gdzieszukanetxt
-        self.mpk = mpk
-        self.czasprzejazdu = czasprzejazdu
-        self.rynekok = rynekok
-        self.wnioski = wnioski
+        self.czynsz = czynsz
+        self.gmiesz = gmiesz
+        self.Wcena = Wcena
+        self.Wstand = Wstand
+        self.Wloka = Wloka
 
 db.create_all()
 
@@ -84,33 +56,14 @@ def add_todatabase():
 
     wiek = request.form['wiek']
     plec = request.form['plec']
-    wielodzietnosc = request.form['wielodzietnosc']
-    wielmiasta = request.form['wielmiasta']
-    stukoncz = request.form['stukoncz']
-
-    stzamiesz = request.form['stzamiesz']
-    strodzice = request.form['strodzice']
-    stgdzie = " studia gdzie" # request.form['stgdzie']
-    ilepok = "ilo pokojowe" #request.form['ilepok']
-    ilewsplok = "ile wspollokatorow" # request.form['ilewsplok']
-
-    ilezmian = request.form['ilezmian']
-    powzmian = request.form['powzmian']
-    order = "kolejnosc czynnikow" #request.form['order']
-    znanewczesniej = "czy znane wczesniej"# request.form['znanewczesniej']
-    koedukacyjne = "koedukacyjne?"# request.form['koedukacyjne']
-
-    gdzieszukane = "gdzie szukane" # request.form['gdzieszukane']
-    gdzieszukanetxt = "gdzie szukane pole tekstowe" # request.form['gdzieszukanetxt']
-    mpk = request.form['mpk']
-
-    czasprzejazdu = request.form['czasprzejazdu']
-    rynekok = request.form['rynekok']
-
-    wnioski = request.form['wnioski']
+    czynsz = request.form['czynsz']
+    gmiesz = request.form['gmiesz']
+    Wcena = request.form['Wcena']
+    Wstand = request.form['Wstand']
+    Wloka = request.form['Wloka']
 
     
-    fd = Formdata(wiek, plec, wielodzietnosc, wielmiasta, stukoncz, stzamiesz, strodzice, stgdzie, ilepok, ilewsplok, ilezmian, powzmian, order, znanewczesniej, koedukacyjne, gdzieszukane, gdzieszukanetxt, mpk, czasprzejazdu, rynekok, wnioski)
+    fd = Formdata(wiek, plec, czynsz, gmiesz, Wcena, Wstand, Wloka)
     db.session.add(fd)
     db.session.commit()
 

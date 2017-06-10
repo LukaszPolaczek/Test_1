@@ -14,30 +14,12 @@
         <th>Created at</th>
 
         <th>Wiek</th>
-        <th>Plec</th>
-        <th>wielodzietnosc</th>
-        <th>wielmiasta</th>
-        <th>Studia uk</th>
-
-        <th>Studia zam</th>
-        <th>Studia rodzic</th>
-        <th>Studia gdzie</th>
-        <th>ile pokojow</th>
-        <th>ile wspollokatorow</th>
-
-        <th>ile zmian</th>
-        <th>Pow zmian</th>
-        <th>Priorytety</th>
-        <th>osoby znane wcz</th>
-        <th>koedukacyjne mieszk?</th>
-
-        <th>gdzie szukane</th>
-        <th>gdzie szukane inne</th>
-        <th>Czy kom miejska</th>
-        <th>Czas przejazdu</th>
-        <th>Zadowolenie z rynku</th>
-
-        <th>Przemyslenia</th>
+        <th>Płeć</th>
+        <th>Czynsz</th>
+        <th>Jakie mieszkanie?</th>
+        <th>Jak ważna cena?</th>
+        <th>Jak ważny standard?</th>
+        <th>Jak ważna lokalizacja</th>
     </tr>
     </thead>
 
@@ -49,36 +31,61 @@
 
         <td>{{ element.wiek }}        </td>
         <td>{% if element.plec == 0 %}
-            Mężczyzna
-            {% endif %}
-            {% if element.plec == 1 %}
             Kobieta
             {% endif %}
+            {% if element.plec == 1 %}
+            Mężczyzna
+            {% endif %}
         </td>
-        <td>{{ element.wielodzietnosc }}</td>
-        <td>{{ element.wielmiasta }}</td>
-        <td>{{ element.stukoncz }}</td>
-
-        <td>{{ element.stzamiesz }}</td>
-        <td>{{ element.strodzice }}</td>
-        <td>{{ element.stgdzie }}</td>
-        <td>{{ element.ilepok }}</td>
-        <td>{{ element.ilewsplok }}</td>
-
-        <td>{{ element.ilezmian }}</td>
-        <td>{{ element.powzmian }}</td>
-        <td>{{ element.order }}</td>
-        <td>{{ element.znanewczesniej }}</td>
-        <td>{{ element.koedukacyjne }}</td>
-
-        <td>{{ element.gdzieszukane }}</td>
-        <td>{{ element.gdzieszukanetxt }}</td>
-        <td>{{ element.mpk }}</td>
-        <td>{{ element.czasprzejazdu }}</td>
-        <td>{{ element.rynekok }}</td>
-
-        <td>{{ element.wnioski }}</td>
-
+        <td>{{ element.czynsz }} zł</td>
+        <td>
+            {% if element.gmiesz == 1 %}
+            Akademik
+            {% elif element.gmiesz == 2 %}
+            Mieszkanie (samodzielnie)
+            {% elif element.gmiesz == 3 %}
+            Pokój 1-osobowy
+            {% elif element.gmiesz == 4 %}
+            Pokój wieloosobowy
+            {% elif element.gmiesz == 5 %}
+            Mieszkam z rodzicami
+            {% else %}
+            Błąd, dane<br>spoza zakresu
+            {% endif %}
+        </td>
+        <td>
+            {% if element.Wcena == 1 %}
+            mało istotne
+            {% elif element.Wcena == 2 %}
+            średnio istotne
+            {% elif element.Wcena == 3 %}
+            bardzo istotne
+            {% else %}
+            Błąd, dane<br>spoza zakresu
+            {% endif %}
+        </td>
+        <td>
+            {% if element.Wstand == 1 %}
+            mało istotne
+            {% elif element.Wstand == 2 %}
+            średnio istotne
+            {% elif element.Wstand == 3 %}
+            bardzo istotne
+            {% else %}
+            Błąd, dane<br>spoza zakresu
+            {% endif %}
+        </td>
+        <td>
+            {% if element.Wloka == 1 %}
+            mało istotne
+            {% elif element.Wloka == 2 %}
+            średnio istotne
+            {% elif element.Wloka == 3 %}
+            bardzo istotne
+            {% else %}
+            Błąd, dane<br>spoza zakresu
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
     </tbody>
