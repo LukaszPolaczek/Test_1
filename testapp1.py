@@ -39,20 +39,31 @@ db.create_all()
 
 @app.route("/")
 def index():
-    return render_template('base.html')
-
-@app.route("/form")
-def show_form():
     return render_template('form.html')
+
 
 @app.route("/raw")
 def show_database():
     data = db.session.query(Formdata).all()
     return render_template('raw.html', formdata = data)
 
+
 @app.route("/result")
 def show_result():
-    return render_template('result.html')
+
+    # Przykład przesyłania danych z pomocą dictionary
+
+    TempDictToResult = {}
+
+    TempAvarage = 34
+    TempTable = [11,23,5]
+    TempDict = {'Namber1':34,'Table1':[56,41]}
+
+    TempDictToResult['TempAvarageName']= TempAvarage
+    TempDictToResult['TempTableName']  = TempTable
+    TempDictToResult['TempDictName']   = TempDict
+
+    return render_template('result.html',TempSent=TempDictToResult)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
@@ -70,7 +81,7 @@ def add_todatabase():
     db.session.add(fd)
     db.session.commit()
 
-    return redirect('/')
+    return redirect('/result')
 
 
 if __name__ == '__main__':

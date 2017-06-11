@@ -7,4 +7,22 @@
     <h1>TEST</h1>
 </div>
 
+<table>
+    <thead>
+    <tr><th>Dict Key</th><th>Dict Value</th></tr>
+    </thead>
+    <tbody>
+        {% for Key in TempSent.keys() %}
+        <tr>
+            <td>
+                {{Key}}
+            </td>
+            <td>
+                {{TempSent[Key]}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
