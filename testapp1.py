@@ -50,6 +50,9 @@ def show_database():
     data = db.session.query(Formdata).all()
     return render_template('raw.html', formdata = data)
 
+@app.route("/result")
+def show_result():
+    return render_template('result.html')
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
