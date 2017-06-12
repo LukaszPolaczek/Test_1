@@ -1,3 +1,70 @@
 .divider{
     margin: 0cm 0cm .1cm 0cm;
   }
+
+  .number {
+    font-size: 32px;
+    color: rgba(84,65,255,1);
+    border: 1px solid  rgba(84,65,255,1);
+    border-radius: 100%;
+    padding: 3px 17px;
+    display: inline-block;
+    margin-right:15px;
+    font-weight: bold;
+  }
+  label {
+    font-size:16px;
+    font-weight: 300;
+  }
+
+  .medium-font {
+    font-weight:500
+  }
+
+  .input-title {
+    font-size:24px;
+    font-weight: 300;
+    margin-bottom:10px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .violet {
+    color: rgba(84,65,255,1);
+  }
+  .bigger-font {
+    font-size: 18px;
+  }
+
+  .form-check {
+    margin-right: 15px;
+  }
+
+  input.form-check-input {
+    margin-right: 5px;
+  }
+
+  button {
+    border: none;
+    background-color: rgba(84,65,255,1);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 3px;
+  }
+
+  .button-container {
+    text-align:center;
+  }
+
+  .navbar {
+    background-color: #fafafa;
+  }
+
+  a {
+    color: #333;
+  }
+  @media screen and (min-width:768px) {
+
+  }
