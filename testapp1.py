@@ -50,20 +50,57 @@ def show_database():
 
 @app.route("/result")
 def show_result():
+    fd_list = db.session.query(Formdata).all()
 
-    # Przykład przesyłania danych z pomocą dictionary
+    # Count statistics for chart 1:
+    cost1 = 0
+    cost2 = 0
+    cost3 = 0
+    standard1 = 0
+    standard2 = 0
+    standard3 = 0
+    location1 = 0
+    location2 = 0
+    location3 = 0
+    values_not_in_range = []
 
-    TempDictToResult = {}
+    for el_cost in fd_list:
+        if int(el_cost.Wcena) == 1:
+            cost1 += 1
+        if int(el_cost.Wcena) == 2:
+            cost2 += 1
+        if int(el_cost.Wcena) == 3:
+            cost3 += 1
+        else:
+            values_not_in_range.append(int(el_cost.Wcena))
+            # we should throw some exception here
 
-    TempAvarage = 34
-    TempTable = [11,23,5]
-    TempDict = {'Namber1':34,'Table1':[56,41]}
+    for el_standard in fd_list:
+        if int(el_standard.Wstand) == 1:
+            standard1 += 1
+        if int(el_standard.Wstand) == 2:
+            standard2 += 1
+        if int(el_standard.Wstand) == 3:
+            standard3 += 1
+        else:
+            values_not_in_range.append(int(el_standard.Wstand))
+            # we should throw some exception here
 
-    TempDictToResult['TempAvarageName']= TempAvarage
-    TempDictToResult['TempTableName']  = TempTable
-    TempDictToResult['TempDictName']   = TempDict
+    for el_location in fd_list:
+        if int(el_location.Wloka) == 1:
+            location1 += 1
+        if int(el_location.Wloka) == 2:
+            location2 += 1
+        if int(el_location.Wloka) == 3:
+            location3 += 1
+        else:
+            values_not_in_range.append(int(el_location.Wloka))
+            # we should throw some exception here
 
-    return render_template('result.html',TempSent=TempDictToResult)
+    # Prepare data for google charts
+    data_for_chart_1 = [['Cena', cost1, cost2, cost3], ['Standard', standard1, standard2, standard3], ['Lokalizacja', location1, location2, location3]]
+
+    return render_template('result.html', data_for_chart_1=data_for_chart_1)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
