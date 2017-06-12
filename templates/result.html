@@ -5,24 +5,72 @@
 
 <div class="page-header">
     <h1>TEST</h1>
+    <b></b>
 </div>
 
-<table>
-    <thead>
-    <tr><th>Dict Key</th><th>Dict Value</th></tr>
-    </thead>
-    <tbody>
-        {% for Key in TempSent.keys() %}
-        <tr>
-            <td>
-                {{Key}}
-            </td>
-            <td>
-                {{TempSent[Key]}}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<script src="static/js/highcharts.js"></script>
+<script src="static/js/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+<script>
+    var man = {{ ResultsData['Man'] }}
+    var woman = {{ ResultsData['Woman'] }}
+</script>
+<script type="application/javascript">
+
+    Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Płeć ankietowanych'
+    },
+    xAxis: {
+        categories: ['Płeć'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Liczba',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Kobiet',
+        data: [woman]
+    }, {
+        name: 'Mezczyzn',
+        data: [man]
+    }]
+});
+</script>
 
 {% endblock %}

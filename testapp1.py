@@ -51,19 +51,16 @@ def show_database():
 @app.route("/result")
 def show_result():
 
-    # Przykład przesyłania danych z pomocą dictionary
+    Results = {}
 
-    TempDictToResult = {}
+    for row in db.engine.execute("select count(*) from baza1 where plec = 1"):
+        Results['Man'] = row[0]
+    for row in db.engine.execute("select count(*) from baza1 where plec = 0"):
+        Results['Woman'] = row[0]
 
-    TempAvarage = 34
-    TempTable = [11,23,5]
-    TempDict = {'Namber1':34,'Table1':[56,41]}
+    print "Kobiet: " + str(Results['Woman']) + " Mezczyzn: " + str(Results['Man'])
 
-    TempDictToResult['TempAvarageName']= TempAvarage
-    TempDictToResult['TempTableName']  = TempTable
-    TempDictToResult['TempDictName']   = TempDict
-
-    return render_template('result.html',TempSent=TempDictToResult)
+    return render_template('result.html',ResultsData=Results)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
