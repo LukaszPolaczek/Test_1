@@ -4,25 +4,25 @@
 {% block content %}
 
 <div class="page-header">
-    <h1>TEST</h1>
+    <h1>Results</h1>
+    <div id="chart_div"></div>
 </div>
 
-<table>
-    <thead>
-    <tr><th>Dict Key</th><th>Dict Value</th></tr>
-    </thead>
-    <tbody>
-        {% for Key in TempSent.keys() %}
-        <tr>
-            <td>
-                {{Key}}
-            </td>
-            <td>
-                {{TempSent[Key]}}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data_for_chart_1 = new google.visualization.DataTable();
+    data_for_chart_1.addColumn('string', 'Question');
+    data_for_chart_1.addColumn('number', 'Suma odpowiedzi "mało istotne"');
+    data_for_chart_1.addColumn('number', 'Suma odpowiedzi "średnio istotne"');
+    data_for_chart_1.addColumn('number', 'Suma odpowiedzi "bardzo istotne"');
+    data_for_chart_1.addRows( {{ data_for_chart_1|tojson }} );
+    var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+    chart.draw(data_for_chart_1, {legend: 'none', vAxis: {baseline: 0} });
+  }
+</script>
 
 {% endblock %}
