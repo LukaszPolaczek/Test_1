@@ -52,6 +52,7 @@
     color: #fff;
     padding: 10px 16px;
     border-radius: 3px;
+    outline: none;
 
   }
   .button-container {
@@ -70,6 +71,51 @@
   a:hover {
     color: rgba(84,65,255,1);
   }
+
+  .hidden-overflow {
+    overflow: hidden;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100vw;
+    min-height: 100vh;
+    top: 50px;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: transform 1s, visibility 1s;
+  }
+
+  .overlay.closed{
+    visibility: hidden;
+    transform: translateY(-100%);
+  
+
+  }
+
+  .overlay__inner {
+    text-align: left;
+    padding: 0 15px;
+  }
+
+  .logo{
+      display:block;
+      max-width: 350px;
+      height: auto;
+      margin: 0 auto;
+
+  }
+
+  .overlay__paragraph {
+    margin: 40px 0;
+    font-size: 22px;
+    font-weight: 300;
+  }
+
   @media screen and (min-width:768px) {
 
   }
