@@ -46,7 +46,7 @@
     margin-right: 5px;
   }
 
-  button {
+  .button {
     border: none;
     background-color: rgba(84,65,255,1);
     color: #fff;
@@ -73,11 +73,11 @@
   }
 
   .hidden-overflow {
-    overflow: hidden;
+    overflow-y: hidden;
   }
 
   .overlay {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     min-height: 100vh;
     top: 50px;
@@ -93,8 +93,6 @@
   .overlay.closed{
     visibility: hidden;
     transform: translateY(-100%);
-  
-
   }
 
   .overlay__inner {
@@ -115,7 +113,44 @@
     font-size: 22px;
     font-weight: 300;
   }
+  .icon-bar {
+    background-color:  #000;
+  }
 
-  @media screen and (min-width:768px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   }
 
+  .header__item {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .header__result {
+    margin-bottom: 0;
+    font-size: 24px;
+    max-width: 70%;
+  }
+
+  .header__result  span {
+    display: block;
+    font-size: 12px;
+  }
+  @media screen and (min-width:580px) {
+    .header__item {
+        width: calc((100% - 20px)/2);
+    }
+  }
+
+  @media screen and (min-width:1025px) {
+    .header__item {
+        width: calc((100% - 20px)/4);
+    }
   }

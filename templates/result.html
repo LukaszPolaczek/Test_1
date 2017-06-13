@@ -3,13 +3,31 @@
 
 {% block content %}
 
-<div class="page-header">
-    <h1>Results</h1>
+<div class="container" role="main">
+    <div class="header">
+        <div class="header__item">
+            <p class="header__result">{{ counter }}<span>Liczba udzielonych odpowiedzi</span></p>
+            <img src="" alt="">
+        </div>
+        <div class="header__item">
+            <p class="header__result">{{ meanAge }}<span>Średni wiek</span></p>
+            <img src="" alt="">
+        </div>
+        <div class="header__item">
+            <p class="header__result">{{ meanRent }}PLN<span>Średnie wydatki za mieszkanie</span></p>
+            <img src="" alt="">
+        </div>
+        <div class="header__item">
+            <p class="header__result place-to-live"></p>
+            <img src="" alt="">
+        </div>
+    </div>
     <div id="chart_div"></div>
 </div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
+console.log({{ data_for_chart_1|tojson }})
   google.load('visualization', '1', {'packages':['corechart']});
   google.setOnLoadCallback(drawChart);
   function drawChart() {
@@ -23,6 +41,15 @@
             document.getElementById('chart_div'));
     chart.draw(data_for_chart_1, {legend: 'none', vAxis: {baseline: 0} });
   }
+</script>
+<script>
+     var arr = {{list}};
+     var index = arr.indexOf(Math.max(...arr));
+     var placesArray = ["Akademik","Mieszkanie (samodzielnie)","Pokój 1-osobowy","Pokój wieloosobowy","Mieszkam z rodzicami"]
+
+     var place = placesArray[index]
+    document.getElementsByClassName("place-to-live")[0].innerHTML = place + "<span>Najwięcej osób mieszka w... </span>"
+         console.log(place)
 </script>
 
 {% endblock %}
