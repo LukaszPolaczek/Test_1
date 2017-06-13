@@ -4,111 +4,122 @@
 {% block content %}
 
 
-<div class="page-header">
-  <h1>Please fill the form</h1>
+<!--<div class="page-header">-->
+  <!--<h1>Please fill the form</h1>-->
+<!--</div>-->
+<div class="overlay">
+    <div class="overlay__inner">
+        <img src="../static/roommates.svg" alt="" class="logo">
+        <p class="overlay__paragraph"><span class="medium-font">RoomMates</span> znajdź wspaniałe mieszkanie<br/> i poznaj ludzi takich jak ty</p>
+        <div class="button-container"><button class="overlay-close">Zaczynajmy</button></div>
+    </div>
+
 </div>
+<div class="container theme-showcase" role="main">
+    <form role="form" action="/save" method="post">
+        <!--<h3>Ew. naglowek</h3>-->
 
+        <div class="form-group">
+            <label for="wiek" class="input-title"><span class="number">1</span>Cześć. Ile masz <span class="medium-font">lat</span>?</label>
+            <input type="number" class="form-control" id="wiek" name="wiek" min="18" max="30" required>
+        </div>
 
-<form role="form" action="/save" method="post">
-    <h3>Ew. naglowek</h3>
-
-    <div class="form-group">
-        <label for="wiek">1. Ile masz lat?</label>
-        <input type="number" class="form-control" id="wiek" name="wiek" min="18" max="30" required>
-    </div>
-
-    <div class="divider">
-    <b>2. Wybierz swoją płeć:</b>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="plec" value="0" checked>
-        Kobieta
-        </label>
-        <label class="form-check">
-            <input class="form-check-input" type="radio" name="plec" value="1">
-        Mężczyzna
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label for="czynsz">3. Ile mniej więcej płacisz za swoje obecne lokum (PLN)?</label>
-        <input type="number" class="form-control" id="czynsz" name="czynsz" min="0" max="3000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="gmiesz">4. Gdzie aktualnie mieszkasz?</label>
-        <select class="form-control" id="gmiesz" name="gmiesz" required>
-            <option value="1">Akademik</option>
-            <option value="2">Mieszkanie (samodzielnie)</option>
-            <option value="3">Pokój 1-osobowy</option>
-            <option value="4">Pokój wieloosobowy</option>
-            <option value="5">Mieszkam z rodzicami</option>
-        </select>
-    </div>
-
-    <div class="divider">
-    <b>5. Oceń jak ważne przy wyborze mieszkania są dla ciebie:<br></b>
-    </div>
-    <div class="form-group-row">
-        <div class="col-sm-1">Cena</div>
-        <div class="col-sm-11">
-            <div class="form-check form-check-inline">
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wcena" value="1" checked>
-                mało istotne
+        <div class="form-group">
+            <p class="input-title"><span class="number">2</span> Jaka jest Twoja <span class="medium-font">płeć</span>?</p>
+            <div class="">
+                <label>
+                    <input type="radio" name="plec" value="0" checked>
+                    Kobieta
                 </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wcena" value="2">
-                średnio istotne
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wcena" value="3">
-                bardzo istotne
+            </div>
+            <div class="">
+                <label>
+                    <input type="radio" name="plec" value="1">
+                    Mężczyzna
                 </label>
             </div>
         </div>
-    </div>
-    <div class="form-group-row">
-        <div class="col-sm-1">Standard</div>
-        <div class="col-sm-11">
-            <div class="form-check form-check-inline">
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wstand" value="1" checked>
-                 mało istotne
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wstand" value="2">
-                średnio istotne
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wstand" value="3">
-                bardzo istotne
-                </label>
+
+        <div class="form-group">
+            <label for="gmiesz" class="input-title"><span class="number">3</span> <span class="medium-font">Gdzie</span> aktualnie mieszkasz?</label>
+            <select class="form-control" id="gmiesz" name="gmiesz" required>
+                <option value="" disabled selected>Mieszkam...</option>
+                <option value="1">Akademik</option>
+                <option value="2">Mieszkanie (samodzielnie)</option>
+                <option value="3">Pokój 1-osobowy</option>
+                <option value="4">Pokój wieloosobowy</option>
+                <option value="5">Mieszkam z rodzicami</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="czynsz" class="input-title"><span class="number">4</span> Ile mniej więcej <span class="medium-font">płacisz</span> za swoje obecne lokum (PLN)?</label>
+            <input type="number" class="form-control" id="czynsz" name="czynsz" min="0" max="3000" required>
+        </div>
+
+        <div class="form-group">
+            <p class="input-title "><span class="number">5</span> Jak <span class="medium-font">ważne</span> przy wyborze mieszkania dla Ciebie są</p>
+
+            <div class="form-group-row row">
+                <div class="col-sm-2 violet bigger-font"><p>Cena</p></div>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wcena" value="1" checked>
+                        mało istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wcena" value="2">
+                        średnio istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wcena" value="3">
+                        bardzo istotne
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group-row row">
+                <div class="col-sm-2 violet bigger-font"><p>Standard</p></div>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wstand" value="1" checked>
+                         mało istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wstand" value="2">
+                        średnio istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wstand" value="3">
+                        bardzo istotne
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group-row row">
+                <div class="col-sm-2 violet bigger-font"><p>Lokalizacja</p></div>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wloka" value="1" checked>
+                         mało istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wloka" value="2">
+                        średnio istotne
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="Wloka" value="3">
+                        bardzo istotne
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form-group-row">
-        <div class="col-sm-1">Lokalizacja</div>
-        <div class="col-sm-11">
-            <div class="form-check form-check-inline">
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wloka" value="1" checked>
-                 mało istotne
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wloka" value="2">
-                średnio istotne
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="radio" name="Wloka" value="3">
-                bardzo istotne
-                </label>
-            </div>
+        <div class="button-container">
+             <button type="submit" class="">Sprawdź wyniki</button>
         </div>
-    </div>
-
- <button type="submit" class="btn btn-default">Save</button>
-</form>
-
+    </form>
+</div>
 {% endblock %}
