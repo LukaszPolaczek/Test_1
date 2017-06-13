@@ -5,14 +5,15 @@
 
 <div class="page-header">
     <h1>Results</h1>
-    <div id="chart_div"></div>
+    <div id="chart_div_1"></div>
+    <div id="chart_div_2"></div>
 </div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
   google.load('visualization', '1', {'packages':['corechart']});
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
+  google.setOnLoadCallback(drawChart1);
+  function drawChart1() {
     var data_for_chart_1 = new google.visualization.DataTable();
     data_for_chart_1.addColumn('string', 'Question');
     data_for_chart_1.addColumn('number', 'Suma odpowiedzi "mało istotne"');
@@ -20,8 +21,21 @@
     data_for_chart_1.addColumn('number', 'Suma odpowiedzi "bardzo istotne"');
     data_for_chart_1.addRows( {{ data_for_chart_1|tojson }} );
     var chart = new google.visualization.ColumnChart(
-            document.getElementById('chart_div'));
+            document.getElementById('chart_div_1'));
     chart.draw(data_for_chart_1, {legend: 'none', vAxis: {baseline: 0} });
+  }
+
+  google.load('visualization', '1', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart2);
+  function drawChart2() {
+    var data_for_chart_2 = new google.visualization.DataTable();
+    data_for_chart_2.addColumn('string', 'Question');
+    data_for_chart_2.addColumn('number', 'Procent kobiet');
+    data_for_chart_2.addColumn('number', 'Procent mężczyzn');
+    data_for_chart_2.addRows( {{ data_for_chart_2|tojson }} );
+    var chart2 = new google.visualization.ColumnChart(
+            document.getElementById('chart_div_2'));
+    chart2.draw(data_for_chart_2, {legend: 'none', vAxis: {baseline: 0} });
   }
 </script>
 
