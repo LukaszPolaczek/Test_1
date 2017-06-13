@@ -3,29 +3,27 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import statistics
 
-
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///baza1.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baza1.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
 
-class Formdata (db.Model):
-    __tablename__='baza1'
+
+class Formdata(db.Model):
+    __tablename__ = 'baza1'
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
     wiek = db.Column(db.Integer)
     plec = db.Column(db.Integer)
     czynsz = db.Column(db.Integer)
     gmiesz = db.Column(db.Integer)
-    Wcena  = db.Column(db.Integer)
+    Wcena = db.Column(db.Integer)
     Wstand = db.Column(db.Integer)
-    Wloka  = db.Column(db.Integer)
-
+    Wloka = db.Column(db.Integer)
 
     def __init__(self, wiek, plec, czynsz, gmiesz, Wcena, Wstand, Wloka):
-
         self.wiek = wiek
         self.plec = plec
         self.czynsz = czynsz
@@ -33,6 +31,7 @@ class Formdata (db.Model):
         self.Wcena = Wcena
         self.Wstand = Wstand
         self.Wloka = Wloka
+
 
 db.create_all()
 
@@ -97,19 +96,84 @@ def show_result():
             values_not_in_range.append(int(el_location.Wloka))
             # we should throw some exception here
 
-    # Prepare data for google charts
-    data_for_chart_1 = [['Cena', cost1, cost2, cost3], ['Standard', standard1, standard2, standard3], ['Lokalizacja', location1, location2, location3]]
+    # Count statistics for chart 2:
+    percentFemaleApartmentType1 = 0
+    percentFemaleApartmentType2 = 0
+    percentFemaleApartmentType3 = 0
+    percentFemaleApartmentType4 = 0
+    percentFemaleApartmentType5 = 0
+    percentMaleApartmentType1 = 0
+    percentMaleApartmentType2 = 0
+    percentMaleApartmentType3 = 0
+    percentMaleApartmentType4 = 0
+    percentMaleApartmentType5 = 0
+    totalFemale = 0
+    totalMale = 0
+    values_not_in_range_2 = []
 
     trendChartData = []
 
     for person in db.engine.execute("select wiek, czynsz from baza1"):
         trendChartData.append([person.wiek, person.czynsz])
 
-    return render_template('result.html', data_for_chart_1=data_for_chart_1, trendData = trendChartData)
+    for el_apartment in fd_list:
+        if int(el_apartment.plec) == 0:
+            totalFemale += 1
+            if int(el_apartment.gmiesz) == 1:
+                percentFemaleApartmentType1 += 1
+            if int(el_apartment.gmiesz) == 2:
+                percentFemaleApartmentType2 += 1
+            if int(el_apartment.gmiesz) == 3:
+                percentFemaleApartmentType3 += 1
+            if int(el_apartment.gmiesz) == 4:
+                percentFemaleApartmentType4 += 1
+            if int(el_apartment.gmiesz) == 5:
+                percentFemaleApartmentType5 += 1
+            else:
+                values_not_in_range_2.append(int(el_apartment.gmiesz))
+        if int(el_apartment.plec) == 1:
+            totalMale += 1
+            if int(el_apartment.gmiesz) == 1:
+                percentMaleApartmentType1 += 1
+            if int(el_apartment.gmiesz) == 2:
+                percentMaleApartmentType2 += 1
+            if int(el_apartment.gmiesz) == 3:
+                percentMaleApartmentType3 += 1
+            if int(el_apartment.gmiesz) == 4:
+                percentMaleApartmentType4 += 1
+            if int(el_apartment.gmiesz) == 5:
+                percentMaleApartmentType5 += 1
+            else:
+                values_not_in_range_2.append(int(el_apartment.gmiesz))
+        else: values_not_in_range_2.append(int(el_apartment.plec))
+
+    if totalFemale != 0:
+        percentFemaleApartmentType1 = int(100 * percentFemaleApartmentType1 / totalFemale)
+        percentFemaleApartmentType2 = int(100 * percentFemaleApartmentType2 / totalFemale)
+        percentFemaleApartmentType3 = int(100 * percentFemaleApartmentType3 / totalFemale)
+        percentFemaleApartmentType4 = int(100 * percentFemaleApartmentType4 / totalFemale)
+        percentFemaleApartmentType5 = int(100 * percentFemaleApartmentType5 / totalFemale)
+
+    if totalMale != 0:
+        percentMaleApartmentType1 = int(100 * percentMaleApartmentType1 / totalMale)
+        percentMaleApartmentType2 = int(100 * percentMaleApartmentType2 / totalMale)
+        percentMaleApartmentType3 = int(100 * percentMaleApartmentType3 / totalMale)
+        percentMaleApartmentType4 = int(100 * percentMaleApartmentType4 / totalMale)
+        percentMaleApartmentType5 = int(100 * percentMaleApartmentType5 / totalMale)
+
+    data_for_chart_1 = [['Cena', cost1, cost2, cost3], ['Standard', standard1, standard2, standard3],
+                        ['Lokalizacja', location1, location2, location3]]
+
+    data_for_chart_2 = [['Akademik', percentFemaleApartmentType1, percentMaleApartmentType1],
+                        ['Mieszkanie (samodzielnie)', percentFemaleApartmentType2, percentMaleApartmentType2],
+                        ['Pokój 1-osobowy', percentFemaleApartmentType3, percentMaleApartmentType3],
+                        ['Pokój wieloosobowy', percentFemaleApartmentType4, percentMaleApartmentType4],
+                        ['Mieszkam z rodzicami', percentFemaleApartmentType5, percentMaleApartmentType5]]
+
+    return render_template('result.html', data_for_chart_1=data_for_chart_1, data_for_chart_2=data_for_chart_2, trendData = trendChartData)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
-
     wiek = request.form['wiek']
     plec = request.form['plec']
     czynsz = request.form['czynsz']
@@ -118,7 +182,6 @@ def add_todatabase():
     Wstand = request.form['Wstand']
     Wloka = request.form['Wloka']
 
-    
     fd = Formdata(wiek, plec, czynsz, gmiesz, Wcena, Wstand, Wloka)
     db.session.add(fd)
     db.session.commit()
