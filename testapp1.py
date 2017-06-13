@@ -100,7 +100,12 @@ def show_result():
     # Prepare data for google charts
     data_for_chart_1 = [['Cena', cost1, cost2, cost3], ['Standard', standard1, standard2, standard3], ['Lokalizacja', location1, location2, location3]]
 
-    return render_template('result.html', data_for_chart_1=data_for_chart_1)
+    trendChartData = []
+
+    for person in db.engine.execute("select wiek, czynsz from baza1"):
+        trendChartData.append([person.wiek, person.czynsz])
+
+    return render_template('result.html', data_for_chart_1=data_for_chart_1, trendData = trendChartData)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
