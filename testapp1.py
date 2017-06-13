@@ -44,7 +44,7 @@ def index():
 @app.route("/raw")
 def show_database():
     data = db.session.query(Formdata).all()
-    return render_template('raw.html', formdata=data)
+    return render_template('raw.html', formdata = data)
 
 
 @app.route("/result")
@@ -111,6 +111,11 @@ def show_result():
     totalMale = 0
     values_not_in_range_2 = []
 
+    trendChartData = []
+
+    for person in db.engine.execute("select wiek, czynsz from baza1"):
+        trendChartData.append([person.wiek, person.czynsz])
+
     for el_apartment in fd_list:
         if int(el_apartment.plec) == 0:
             totalFemale += 1
@@ -165,7 +170,7 @@ def show_result():
                         ['Pokój wieloosobowy', percentFemaleApartmentType4, percentMaleApartmentType4],
                         ['Mieszkam z rodzicami', percentFemaleApartmentType5, percentMaleApartmentType5]]
 
-    return render_template('result.html', data_for_chart_1=data_for_chart_1, data_for_chart_2=data_for_chart_2)
+    return render_template('result.html', data_for_chart_1=data_for_chart_1, data_for_chart_2=data_for_chart_2, trendData = trendChartData)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
