@@ -28,7 +28,7 @@
   }
 
   .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .violet {
@@ -52,8 +52,8 @@
     color: #fff;
     padding: 10px 16px;
     border-radius: 3px;
-  }
 
+  }
   .button-container {
     text-align:center;
   }
@@ -64,6 +64,11 @@
 
   a {
     color: #333;
+    transition: color .3s;
+  }
+
+  a:hover {
+    color: rgba(84,65,255,1);
   }
   @media screen and (min-width:768px) {
 
