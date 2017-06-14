@@ -62,6 +62,10 @@ def show_result():
     location2 = 0
     location3 = 0
     values_not_in_range = []
+    counter = 0
+    meanAge = 0
+    meanRent = 0
+    placeToLive = []
 
     for el_cost in fd_list:
         if int(el_cost.Wcena) == 1:
@@ -95,6 +99,36 @@ def show_result():
         else:
             values_not_in_range.append(int(el_location.Wloka))
             # we should throw some exception here
+
+            
+    for count in fd_list:
+        counter = counter+1
+
+
+    for list in fd_list:
+        meanAge = meanAge + list.wiek
+        meanRent = meanRent +list.czynsz
+
+
+    meanAge = meanAge/counter
+    meanRent = meanRent/counter
+
+
+
+    for place in db.engine.execute("select gmiesz from baza1"):
+        placeToLive.append(place.gmiesz)
+
+
+    list=[]
+    for x in range (1,6):
+        list.append(placeToLive.count(x))
+
+    header= []
+    header.append(counter)
+    header.append(meanAge)
+    header.append(meanRent)
+    header.append(list)
+
 
     # Count statistics for chart 2:
     percentFemaleApartmentType1 = 0
@@ -170,7 +204,8 @@ def show_result():
                         ['Pokój wieloosobowy', percentFemaleApartmentType4, percentMaleApartmentType4],
                         ['Mieszkam z rodzicami', percentFemaleApartmentType5, percentMaleApartmentType5]]
 
-    return render_template('result.html', data_for_chart_1=data_for_chart_1, data_for_chart_2=data_for_chart_2, trendData = trendChartData)
+    return render_template('result.html', data_for_chart_1=data_for_chart_1, data_for_chart_2=data_for_chart_2, trendData = trendChartData, header=header)
+
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():

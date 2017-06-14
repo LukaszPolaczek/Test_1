@@ -3,12 +3,30 @@
 
 {% block content %}
 
-<div class="page-header">
-    <h1>Results</h1>
+<div class="container" role="main">
+    <div class="header">
+        <div class="header__item">
+            <p class="header__result">{{ header[0] }}<span>Liczba udzielonych odpowiedzi</span></p>
+            <img src="../static/images/users.svg" alt="" class="icon">
+        </div>
+        <div class="header__item">
+            <p class="header__result">{{ header[1] }}<span>Średni wiek</span></p>
+          <img src="../static/images/age.svg" alt="" class="icon">
+        </div>
+        <div class="header__item">
+            <p class="header__result">{{ header[2] }} PLN<span>Średnie wydatki za mieszkanie</span></p>
+           <img src="../static/images/money.svg" alt="" class="icon">
+        </div>
+        <div class="header__item">
+            <p class="header__result place-to-live"></p>
+            <img src="../static/images/place.svg" alt="" class="icon">
+        </div>
+    </div>
+
     <div id="chart_div_1"></div>
     <div id="chart_div_2"></div>
     <div id="trendChart_div"></div>
-</div>
+
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -67,6 +85,14 @@
         var chart = new google.visualization.ScatterChart(document.getElementById('trendChart_div'));
         chart.draw(data, options);
     }
+
+</script>
+<script>
+     var arr = {{ header[3] }};
+     var index = arr.indexOf(Math.max(...arr));
+     var placesArray = ["Akademik","Mieszkanie (samodzielnie)","Pokój 1-osobowy","Pokój wieloosobowy","Mieszkam z rodzicami"]
+     var place = placesArray[index]
+    document.getElementsByClassName("place-to-live")[0].innerHTML = place + "<span>Najwięcej osób mieszka w... </span>"
 
 </script>
 
