@@ -6,20 +6,20 @@
 <div class="container" role="main">
     <div class="header">
         <div class="header__item">
-            <p class="header__result">{{ counter }}<span>Liczba udzielonych odpowiedzi</span></p>
-            <img src="" alt="">
+            <p class="header__result">{{ header[0] }}<span>Liczba udzielonych odpowiedzi</span></p>
+            <img src="../static/images/users.svg" alt="" class="icon">
         </div>
         <div class="header__item">
-            <p class="header__result">{{ meanAge }}<span>Średni wiek</span></p>
-            <img src="" alt="">
+            <p class="header__result">{{ header[1] }}<span>Średni wiek</span></p>
+          <img src="../static/images/age.svg" alt="" class="icon">
         </div>
         <div class="header__item">
-            <p class="header__result">{{ meanRent }}PLN<span>Średnie wydatki za mieszkanie</span></p>
-            <img src="" alt="">
+            <p class="header__result">{{ header[2] }} PLN<span>Średnie wydatki za mieszkanie</span></p>
+           <img src="../static/images/money.svg" alt="" class="icon">
         </div>
         <div class="header__item">
             <p class="header__result place-to-live"></p>
-            <img src="" alt="">
+            <img src="../static/images/place.svg" alt="" class="icon">
         </div>
     </div>
     <div id="chart_div"></div>
@@ -43,13 +43,12 @@ console.log({{ data_for_chart_1|tojson }})
   }
 </script>
 <script>
-     var arr = {{list}};
+     var arr = {{ header[3] }};
      var index = arr.indexOf(Math.max(...arr));
      var placesArray = ["Akademik","Mieszkanie (samodzielnie)","Pokój 1-osobowy","Pokój wieloosobowy","Mieszkam z rodzicami"]
-
      var place = placesArray[index]
     document.getElementsByClassName("place-to-live")[0].innerHTML = place + "<span>Najwięcej osób mieszka w... </span>"
-         console.log(place)
+
 </script>
 
 {% endblock %}

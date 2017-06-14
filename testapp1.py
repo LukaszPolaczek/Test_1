@@ -125,9 +125,16 @@ def show_result():
 
     # list = placeToLive.count(1)
 
+    header= []
+    header.append(counter)
+    header.append(meanAge)
+    header.append(meanRent)
+    header.append(list)
+
+
     # Prepare data for google charts
     data_for_chart_1 = [['Cena', cost1, cost2, cost3], ['Standard', standard1, standard2, standard3], ['Lokalizacja', location1, location2, location3]]
-    return render_template('result.html', data_for_chart_1=data_for_chart_1, counter = counter, meanAge = meanAge, meanRent = meanRent, placeToLive=placeToLive, list=list)
+    return render_template('result.html', data_for_chart_1=data_for_chart_1, header=header)
 
 @app.route("/save", methods=['POST'])
 def add_todatabase():
