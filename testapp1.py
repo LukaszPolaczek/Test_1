@@ -124,9 +124,9 @@ def show_result():
         list.append(placeToLive.count(x))
 
     header= []
-    header.append(counter)
-    header.append(meanAge)
-    header.append(meanRent)
+    header.append(round(counter,2))
+    header.append(round(meanAge,2))
+    header.append(round(meanRent,2))
     header.append(list)
 
 
